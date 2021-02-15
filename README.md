@@ -1,137 +1,15 @@
-# > Task :app:preBuild UP-TO-DATE
+## Tests: 
+ 
 
-> Task :app:preDebugBuild UP-TO-DATE
+We have 3 test that tests our usecases: 
 
-> Task :app:compileDebugAidl NO-SOURCE
+AnswereTest: just test if you provide a correct answer and incorect answer and checks that when you type the correct text it matches with the image. 
+![AnswerTest](https://user-images.githubusercontent.com/70505755/107964149-47d17e80-6fa9-11eb-8356-6382308eaa65.png)
 
-> Task :app:compileDebugRenderscript NO-SOURCE
+NacigationTest: Tests if you are able to navigate the app properly 
+![NavigationTest](https://user-images.githubusercontent.com/70505755/107964270-63d52000-6fa9-11eb-9779-96e21358bcf2.png)
 
-> Task :app:generateDebugBuildConfig UP-TO-DATE
-
-> Task :app:javaPreCompileDebug UP-TO-DATE
-
-> Task :app:checkDebugAarMetadata UP-TO-DATE
-
-> Task :app:generateDebugResValues UP-TO-DATE
-
-> Task :app:generateDebugResources UP-TO-DATE
-
-> Task :app:mergeDebugResources UP-TO-DATE
-
-> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
-
-> Task :app:extractDeepLinksDebug UP-TO-DATE
-
-> Task :app:processDebugMainManifest
-
-> Task :app:processDebugManifest
-
-> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
-
-> Task :app:mergeDebugShaders UP-TO-DATE
-
-> Task :app:compileDebugShaders NO-SOURCE
-
-> Task :app:generateDebugAssets UP-TO-DATE
-
-> Task :app:mergeDebugAssets UP-TO-DATE
-
-> Task :app:compressDebugAssets UP-TO-DATE
-
-> Task :app:processDebugJavaRes NO-SOURCE
-
-> Task :app:checkDebugDuplicateClasses UP-TO-DATE
-
-> Task :app:desugarDebugFileDependencies UP-TO-DATE
-
-> Task :app:mergeExtDexDebug UP-TO-DATE
-
-> Task :app:mergeDebugJniLibFolders UP-TO-DATE
-
-> Task :app:mergeDebugNativeLibs UP-TO-DATE
-
-> Task :app:stripDebugDebugSymbols NO-SOURCE
-
-> Task :app:validateSigningDebug UP-TO-DATE
-
-> Task :app:preDebugAndroidTestBuild SKIPPED
-
-> Task :app:compileDebugAndroidTestAidl NO-SOURCE
-
-> Task :app:processDebugAndroidTestManifest UP-TO-DATE
-
-> Task :app:compileDebugAndroidTestRenderscript NO-SOURCE
-
-> Task :app:generateDebugAndroidTestBuildConfig UP-TO-DATE
-
-> Task :app:javaPreCompileDebugAndroidTest UP-TO-DATE
-
-> Task :app:checkDebugAndroidTestAarMetadata UP-TO-DATE
-
-> Task :app:generateDebugAndroidTestResValues UP-TO-DATE
-
-> Task :app:generateDebugAndroidTestResources UP-TO-DATE
-
-> Task :app:mergeDebugAndroidTestResources UP-TO-DATE
-
-> Task :app:mergeDebugAndroidTestShaders UP-TO-DATE
-
-> Task :app:compileDebugAndroidTestShaders NO-SOURCE
-
-> Task :app:generateDebugAndroidTestAssets UP-TO-DATE
-
-> Task :app:mergeDebugAndroidTestAssets UP-TO-DATE
-
-> Task :app:compressDebugAndroidTestAssets UP-TO-DATE
-
-> Task :app:processDebugAndroidTestJavaRes NO-SOURCE
-
-> Task :app:mergeDebugAndroidTestJavaResource UP-TO-DATE
-
-> Task :app:mergeDebugAndroidTestJniLibFolders UP-TO-DATE
-
-> Task :app:mergeDebugAndroidTestNativeLibs UP-TO-DATE
-
-> Task :app:checkDebugAndroidTestDuplicateClasses UP-TO-DATE
-
-> Task :app:desugarDebugAndroidTestFileDependencies UP-TO-DATE
-
-> Task :app:mergeExtDexDebugAndroidTest UP-TO-DATE
-
-> Task :app:validateSigningDebugAndroidTest UP-TO-DATE
-
-> Task :app:processDebugManifestForPackage
-
-> Task :app:processDebugResources
-
-> Task :app:compileDebugJavaWithJavac UP-TO-DATE
-
-> Task :app:compileDebugSources UP-TO-DATE
-
-> Task :app:mergeDebugJavaResource UP-TO-DATE
-
-> Task :app:dexBuilderDebug UP-TO-DATE
-
-> Task :app:mergeDexDebug UP-TO-DATE
-
-> Task :app:bundleDebugClasses UP-TO-DATE
-
-> Task :app:processDebugAndroidTestResources
-
-> Task :app:compileDebugAndroidTestJavaWithJavac UP-TO-DATE
-
-> Task :app:compileDebugAndroidTestSources UP-TO-DATE
-
-> Task :app:dexBuilderDebugAndroidTest UP-TO-DATE
-
-> Task :app:mergeDexDebugAndroidTest UP-TO-DATE
-
-> Task :app:packageDebugAndroidTest
-
-> Task :app:assembleDebugAndroidTest
-
-> Task :app:packageDebug
-
-> Task :app:assembleDebug
+Imagetest: Test that adds a picture to the database and checks that the database now has it. And also it deletes it afterwards to see the reduction in database. 
+![ImageTest](https://user-images.githubusercontent.com/70505755/107964323-718aa580-6fa9-11eb-8bb0-820898f1ff6f.png)
 
 
