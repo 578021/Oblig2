@@ -57,23 +57,23 @@ public class ImageTest {
         InfoActivity IA = getActivity(iActivity);
         List<Image> imageList = IA.imageList;
         int size = imageList.size();
+
         onView(withId(R.id.addButton)).perform(click());
 
         Intent resultData = new Intent();
-
         Uri uri = Uri.parse("android.resource://com.example.oblig1/drawable/" + R.drawable.kiwi);
         resultData.setData(uri);
-
         Instrumentation.ActivityResult result =
                 new Instrumentation.ActivityResult(Activity.RESULT_OK, resultData);
         intending(not(isInternal())).respondWith(result);
+
         onView(withId(R.id.ChooseButton)).perform(click());
         onView(withId(R.id.editTextName1)).perform(typeText("Kiwi"), closeSoftKeyboard());
         onView(withId(R.id.SubmitButton)).perform(click());
         onView(withId(R.id.imageButton)).perform(click());
-        int sizeAfteradd = imageList.size();
-        assertEquals(size + 1, sizeAfteradd);
 
+        List<Image> images = ImageDatabase.getDatabase(IA).imageDAO().getAll();
+        assertEquals(images.size(), size + 1);
     }
 
     @Test
@@ -81,11 +81,14 @@ public class ImageTest {
         InfoActivity IA = getActivity(iActivity);
         List<Image> imageList = IA.imageList;
         int size = imageList.size();
+
         onView(withId(R.id.toDelete)).perform(click());
         onView(withId(R.id.deleteNameText)).perform(typeText("Kiwi"),closeSoftKeyboard());
         onView(withId(R.id.DeleteButton)).perform(click());
-        int sizeAfterDelete = imageList.size();
-        assertEquals(size - 1, sizeAfterDelete);
+        onView(withId(R.id.imageButton)).perform(click());
+
+        List<Image> images = ImageDatabase.getDatabase(IA).imageDAO().getAll();
+        assertEquals(images.size(), size - 1);
     }
     private InfoActivity getActivity(ActivityScenarioRule<InfoActivity> activityScenarioRule) {
         AtomicReference<InfoActivity> activityRef = new AtomicReference<>();

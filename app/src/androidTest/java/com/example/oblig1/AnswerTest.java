@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -25,6 +26,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 public class AnswerTest {
+
     @Rule
     public ActivityScenarioRule<QuizActivity> qActivity = new ActivityScenarioRule<>(QuizActivity.class);
 
@@ -34,10 +36,6 @@ public class AnswerTest {
         return activityRef.get();
     }
 
-    @Before
-    public void setUp(){
-        
-    }
     @Test
     public void testWrongAnswer() {
         onView(withId(R.id.svarEditText1)).perform(typeText("Baby"), closeSoftKeyboard());

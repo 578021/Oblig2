@@ -16,6 +16,7 @@ public interface ImageDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertImage( Image image);
+
     @Delete
     void delete(Image image);
 

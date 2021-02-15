@@ -43,7 +43,11 @@ public class QuizActivity  extends AppCompatActivity {
         button = (Button) findViewById(R.id.answerButton);
 
         ImageDatabase db = ImageDatabase.getDatabase(this);
-        imageList = db.imageDAO().getAll();
+
+        imageList = (db.imageDAO().getAll());
+        if(imageList.isEmpty()){
+            imageList.add(new Image("android.resource://com.example.oblig1/drawable/" + R.drawable.kiwi, "Kiwi"));
+        }
         r= new Random();
         pickedImage= r.nextInt(imageList.size());
         imageView.setImageURI(Uri.parse(imageList.get(pickedImage).image));

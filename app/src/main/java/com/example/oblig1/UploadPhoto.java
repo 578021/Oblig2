@@ -38,7 +38,6 @@ public class UploadPhoto extends AppCompatActivity implements View.OnClickListen
 
         buttonChoose.setOnClickListener(this);
         buttonSubmit.setOnClickListener(this);
-        buttonSubmit.setVisibility(View.VISIBLE);
     }
 
     //Creating the choose file popup

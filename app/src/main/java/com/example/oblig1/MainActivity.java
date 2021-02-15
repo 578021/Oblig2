@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -25,7 +26,12 @@ public class MainActivity extends AppCompatActivity {
     }
     //Starts activity QuizActivity
     public void takeQuiz(View view){
+        if(ImageDatabase.getDatabase(this).imageDAO().getAll().isEmpty()){
+            Toast.makeText(this, "You need to add pictures to database, before taking quiz", Toast.LENGTH_LONG).show();
+            return;
+        }
         Intent i = new Intent(this, QuizActivity.class);
         startActivity(i);
+
     }
 }
