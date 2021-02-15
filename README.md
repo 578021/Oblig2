@@ -13,3 +13,4 @@ Imagetest: Test that adds a picture to the database and checks that the database
 ![ImageTest](https://user-images.githubusercontent.com/70505755/107964323-718aa580-6fa9-11eb-8bb0-820898f1ff6f.png)
 
 
+GradleLog is in seperate file: "GradleLog" 
