@@ -85,9 +85,10 @@ public class UploadPhoto extends AppCompatActivity implements View.OnClickListen
         }
 
     }
-    //Navigating back
-    public void navigation(View view){
+    @Override
+    public void onBackPressed() {
         Intent i = new Intent(this, InfoActivity.class);
         startActivity(i);
+        finish();
     }
 }

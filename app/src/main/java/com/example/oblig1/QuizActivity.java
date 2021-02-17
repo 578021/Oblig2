@@ -92,10 +92,11 @@ public class QuizActivity  extends AppCompatActivity {
 
         });
     }
-    //Navigate back
-    public void navigation(View view){
+    @Override
+    public void onBackPressed() {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
+        finish();
     }
 
 }

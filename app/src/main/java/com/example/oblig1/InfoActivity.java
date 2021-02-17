@@ -77,17 +77,16 @@ public class InfoActivity extends Activity {
     public void addPicture(View view){
         Intent i = new Intent(this, UploadPhoto.class);
         startActivity(i);
+        finish();
     }
     //Start activity DeletePhoto
     public void removePicture(View view){
         Intent i = new Intent(this, DeletePhoto.class);
         startActivity(i);
     }
-    //Navigate back
-    public void navigation(View view){
+    public void onBackPressed(){
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
-    }
-
+        }
 
 }
