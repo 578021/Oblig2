@@ -3,16 +3,19 @@ package com.example.oblig1;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.room.Room;
 
@@ -22,6 +25,7 @@ public class InfoActivity extends Activity {
 
     ListView myListView;
     List<Image> imageList;
+    CustomAdapter customAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,14 +34,17 @@ public class InfoActivity extends Activity {
         myListView = findViewById(R.id.simpleListView);
         ImageDatabase db = ImageDatabase.getDatabase(this);
         imageList = db.imageDAO().getAll();
-        CustomAdapter customAdapter = new CustomAdapter(imageList);
+       customAdapter = new CustomAdapter(imageList);
         myListView.setAdapter(customAdapter);
+
+        setUpListViewListener();
 
     }
     //A class for making rows of images and names
     public class CustomAdapter extends BaseAdapter {
         ListView myListView;
         List<Image> imageListen;
+
 
         public CustomAdapter(List<Image> imageList){
             imageListen = imageList;
@@ -52,7 +59,7 @@ public class InfoActivity extends Activity {
 
         @Override
         public Object getItem(int position) {
-            return null;
+            return imageList.get(position);
         }
 
         @Override
@@ -88,5 +95,19 @@ public class InfoActivity extends Activity {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
         }
+    private void setUpListViewListener() {
+        myListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+       @Override
+       public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+       Context context = getApplicationContext();
+       Toast.makeText(context, "Item removed", Toast.LENGTH_LONG).show();
+       ImageDatabase.getDatabase(context).imageDAO().delete(imageList.get(position));
+       imageList.remove(position);
+       customAdapter.notifyDataSetChanged();
+       return true;
+         }
+         }
+        );
+    }
 
 }

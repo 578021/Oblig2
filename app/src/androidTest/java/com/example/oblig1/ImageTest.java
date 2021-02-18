@@ -70,7 +70,6 @@ public class ImageTest {
         onView(withId(R.id.ChooseButton)).perform(click());
         onView(withId(R.id.editTextName1)).perform(typeText("Kiwi"), closeSoftKeyboard());
         onView(withId(R.id.SubmitButton)).perform(click());
-        onView(withId(R.id.imageButton)).perform(click());
 
         List<Image> images = ImageDatabase.getDatabase(IA).imageDAO().getAll();
         assertEquals(images.size(), size + 1);
@@ -85,7 +84,7 @@ public class ImageTest {
         onView(withId(R.id.toDelete)).perform(click());
         onView(withId(R.id.deleteNameText)).perform(typeText("Kiwi"),closeSoftKeyboard());
         onView(withId(R.id.DeleteButton)).perform(click());
-        onView(withId(R.id.imageButton)).perform(click());
+
 
         List<Image> images = ImageDatabase.getDatabase(IA).imageDAO().getAll();
         assertEquals(images.size(), size - 1);
