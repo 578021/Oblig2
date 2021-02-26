@@ -37,15 +37,17 @@ import static org.junit.Assert.assertTrue;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ImageTest {
 
+    // Getting the correct activity to test on
     @Rule
     public ActivityScenarioRule<InfoActivity> iActivity = new ActivityScenarioRule<>(InfoActivity.class);
 
+    // Setting up the Intents
     @Before
     public void setUp() {
         Intents.init();
     }
 
-
+    // Taking away the intents
     @After
     public void tearDown() {
         Intents.release();
@@ -65,14 +67,14 @@ public class ImageTest {
         resultData.setData(uri);
         Instrumentation.ActivityResult result =
                 new Instrumentation.ActivityResult(Activity.RESULT_OK, resultData);
-        intending(not(isInternal())).respondWith(result);
+        intending(not(isInternal())).respondWith(result); // We need the Intents.init() for this to work correctly
 
         onView(withId(R.id.ChooseButton)).perform(click());
         onView(withId(R.id.editTextName1)).perform(typeText("Kiwi"), closeSoftKeyboard());
         onView(withId(R.id.SubmitButton)).perform(click());
 
-        List<Image> images = ImageDatabase.getDatabase(IA).imageDAO().getAll();
-        assertEquals(images.size(), size + 1);
+        List<Image> images = ImageDatabase.getDatabase(IA).imageDAO().getAll(); // Getting the images in the database
+        assertEquals(images.size(), size + 1); // Checking if the database is one larger
     }
 
     @Test
@@ -86,12 +88,12 @@ public class ImageTest {
         onView(withId(R.id.DeleteButton)).perform(click());
 
 
-        List<Image> images = ImageDatabase.getDatabase(IA).imageDAO().getAll();
-        assertEquals(images.size(), size - 1);
+        List<Image> images = ImageDatabase.getDatabase(IA).imageDAO().getAll(); // Getting the images in the database
+        assertEquals(images.size(), size - 1);  // Checking if the database is one smaller
     }
     private InfoActivity getActivity(ActivityScenarioRule<InfoActivity> activityScenarioRule) {
-        AtomicReference<InfoActivity> activityRef = new AtomicReference<>();
-        activityScenarioRule.getScenario().onActivity(activityRef::set);
-        return activityRef.get();
+        AtomicReference<InfoActivity> activityRef = new AtomicReference<>(); // AtomicReference an object reference that may be updated automatically
+        activityScenarioRule.getScenario().onActivity(activityRef::set); // Returns an given action on the activity main thread
+        return activityRef.get(); // Returns the action
     }
 }

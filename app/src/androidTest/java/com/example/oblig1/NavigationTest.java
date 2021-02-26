@@ -18,10 +18,12 @@ import static junit.framework.TestCase.assertEquals;
 
 public class NavigationTest {
 
-    @Rule
+
+    @Rule // Gives us an instance of the class we are going to test
     public ActivityScenarioRule<MainActivity> activityRule = new ActivityScenarioRule<>(MainActivity.class);
 
-    @Test
+    @Test // Checking if the displayed matches the infoActivity. Alternative we could test if the infoActivity starts with intent resolves
+    // you could insert that you are in the new activity this way
     public void testNavigation(){
         onView(withId(R.id.infoButton1)).perform(click());
         onView(withId(R.id.infoActivity)).check(matches(isDisplayed()));

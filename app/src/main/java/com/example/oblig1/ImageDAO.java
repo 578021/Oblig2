@@ -9,13 +9,12 @@ import androidx.room.Query;
 
 import java.util.List;
 
+// Creating a DAO for methods we can use in the database
 @Dao
 public interface ImageDAO {
+    // If you upload the same image file it will only replace the old one. Same image is defined with the URI
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertAll(Image... images);
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertImage( Image image);
+    void insertImage(Image image);
 
     @Delete
     void delete(Image image);

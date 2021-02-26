@@ -24,14 +24,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="152dp"
-        android:text="Svar"
+        android:text="Submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
-        android:id="@+id/poengTextView1"
+        android:id="@+id/pointsTextView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
@@ -43,7 +43,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/avTextView1"
+        android:id="@+id/outOfTextView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="108dp"
@@ -51,17 +51,17 @@
         android:layout_marginTop="64dp"
         android:layout_marginEnd="97dp"
         android:layout_marginRight="97dp"
-        android:text="av"
+        android:text="out of "
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toStartOf="@+id/resultatTextView1"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/poengTextView1"
+        app:layout_constraintEnd_toStartOf="@+id/scoreTextView1"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toEndOf="@+id/pointsTextView1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/resultatTextView1"
+        android:id="@+id/scoreTextView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="219dp"
@@ -73,17 +73,17 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.692"
-        app:layout_constraintStart_toEndOf="@+id/avTextView1"
+        app:layout_constraintStart_toEndOf="@+id/outOfTextView1"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/svarEditText1"
+        android:id="@+id/answerEditText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="44dp"
         android:ems="10"
-        android:hint="Ditt svar"
+        android:hint="Your answer"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/answerButton"
         app:layout_constraintEnd_toEndOf="parent"

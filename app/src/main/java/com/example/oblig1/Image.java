@@ -12,6 +12,7 @@ import androidx.room.PrimaryKey;
 
 import javax.xml.namespace.QName;
 
+// This entity is for creating the Image and name object, in the database. so we have an constructor/get/set we can use in other classes
 @Entity
 public class Image extends Application {
     @NonNull

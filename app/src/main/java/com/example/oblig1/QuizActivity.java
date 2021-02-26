@@ -14,24 +14,29 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import java.util.List;
 import java.util.Random;
 
 public class QuizActivity  extends AppCompatActivity {
 
+
+    // initializes all the different variables that are in use in this class
     ImageView imageView;
     Button button;
     Random r;
 
     int pickedImage;
 
-    TextView poengTextView;
-    TextView resulTextView;
-    int poeng = 0;
-    int resultat;
+    TextView pointsTextView;
+    TextView scoreTextView;
+    int points = 0;
+    int score;
     List<Image> imageList;
+
+    // On create runs the first time the activity is opened, this initializes  the activity with the commands inside and creates an instance of it.
+    // Also in the oncCreate we set the layout for the Activity
+
 
 
     @Override
@@ -39,31 +44,35 @@ public class QuizActivity  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quiz_activity);
 
+        // finding the correct imageView and button from the layout
         imageView =(ImageView) findViewById(R.id.imageView);
         button = (Button) findViewById(R.id.answerButton);
 
+        // Getting access to the database and finding all the pictures
         ImageDatabase db = ImageDatabase.getDatabase(this);
-
         imageList = (db.imageDAO().getAll());
+
+        // this is only for the testcase (Answer Test will need this for checking the database)
         if(imageList.isEmpty()){
             imageList.add(new Image("android.resource://com.example.oblig1/drawable/" + R.drawable.kiwi, "Kiwi"));
         }
+
+        // Setting a random picture to the quiz
         r= new Random();
         pickedImage= r.nextInt(imageList.size());
         imageView.setImageURI(Uri.parse(imageList.get(pickedImage).image));
         button.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
-
-                EditText answerText =(EditText) findViewById(R.id.svarEditText1);
+                // finding the text that the user writes in, in the input field and converting it to a string
+                EditText answerText =(EditText) findViewById(R.id.answerEditText1);
                 String answer = answerText.getText().toString();
 
-                // Setter poengsummen
+                // Keeping track of the points for the user
                 if (answer.equals(imageList.get(pickedImage).name)){
-                    poengTextView = (TextView) findViewById(R.id.poengTextView1);
-                    poeng++;
-                    poengTextView.setText(Integer.toString(poeng));
+                    pointsTextView = (TextView) findViewById(R.id.pointsTextView1);
+                    points++;
+                    pointsTextView.setText(Integer.toString(points));
                 } else{
                     LayoutInflater inflater = getLayoutInflater();
                     View layout = inflater.inflate(R.layout.toast_layout, (ViewGroup) findViewById(R.id.toast_root));
@@ -77,21 +86,23 @@ public class QuizActivity  extends AppCompatActivity {
                     toast.show();
 
                 }
-                // setter antall forsøk
-                resulTextView =(TextView) findViewById(R.id.resultatTextView1);
-                resultat ++;
-                resulTextView.setText(Integer.toString(resultat));
-                // Finnet ut hva som ble svart
+                // updating the total tries
+                scoreTextView =(TextView) findViewById(R.id.scoreTextView1);
+                score ++;
+                scoreTextView.setText(Integer.toString(score));
 
-                // setter tilfeldig bilde
+
+                // picks a new random image
                 pickedImage= r.nextInt(imageList.size());
                 imageView.setImageURI(Uri.parse(imageList.get(pickedImage).image));
 
+                // Resetting the textBox
                 answerText.setText("");
             }
 
         });
     }
+    // when the user press the back button, we get sent back to mainActivity and pops quizActivity off from the activity stack
     @Override
     public void onBackPressed() {
         Intent i = new Intent(this, MainActivity.class);
